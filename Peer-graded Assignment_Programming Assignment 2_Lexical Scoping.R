@@ -1,4 +1,4 @@
- makeVector <- function(x = numeric()) {
+makeVector <- function(x = numeric()) {
 +         m <- NULL
 +         set <- function(y) {
 +                 x <<- y
@@ -22,28 +22,68 @@
 +         x$setmean(m)
 +         m
 + }
-> makeCacheMatrix()
-Error in makeCacheMatrix() : could not find function "makeCacheMatrix"
-> makeCacheMatrix(x)
-Error in makeCacheMatrix(x) : could not find function "makeCacheMatrix"
-> makeCacheMatrix
-Error: object 'makeCacheMatrix' not found
-> makeCacheMatrix <- function(x = matrix()) {
+> makeCacheMatrix <- function(x=matrix())
 + }
-> 
+Error: unexpected '}' in:
+"makeCacheMatrix <- function(x=matrix())
+}"
+> makeCacheMatrix <- function(x=matrix()) }
+Error: unexpected '}' in "makeCacheMatrix <- function(x=matrix()) }"
+> makeCacheMatrix <- function(x=matrix) }
+Error: unexpected '}' in "makeCacheMatrix <- function(x=matrix) }"
+> makeCacheMatrix <- function(x=matrix) {
++ }
+> cacheSolve <- makeCacheaMatrix {
+Error: unexpected '{' in "cacheSolve <- makeCacheaMatrix {"
+> cacheSolve
+Error: object 'cacheSolve' not found
 > cacheSolve <- function(x, ...) {
++ }
+> makeCacheMatrix <- function(x=matrix()){
++ invr<-NULL
++ set<-function(y){
++ x<<-y
++ invr<<-NULL
++ }
++ }
+> get<-function() x
+> get<-function() x {
+Error: unexpected '{' in "get<-function() x {"
+> get<-function() x
+> setinverse<-fucntion(inverse) invr<<-inverse
+Error: unexpected symbol in "setinverse<-fucntion(inverse) invr"
+> set <-function(inverse) invr<<-inverse
+> get <-function()invr
+> list(set=set, get=get, setinverse=setinverse, getinverse = getinverse)
+$set
+function(inverse) invr<<-inverse
+
+$get
+function()invr
+
+$setinverse
+function(inverse) invrs <- inverse
+
+$getinverse
+function() invrs
+
+> cacheSolve <- function(x, ...) {
++ invr<= x$getinverse()
++ if(!is.null(invr)) {
++ message("Getting Cached Data:-")
++ return(invr)
++ }
++ matrx<-x$get()
++ invr<-solve(matrx, ...)
++ x$setinverse(invr)
++ invr
 + }
 > solve(x)
 Error in solve.default(x) : 'a' (2 x 1) must be square
 > solve
 function (a, b, ...) 
 UseMethod("solve")
-<bytecode: 0x000001a2e9a9de10>
+<bytecode: 0x000002826ef6c450>
 <environment: namespace:base>
-> solve(a)
-Error in solve(a) : object 'a' not found
-> solve(2 x 1)
-Error: unexpected symbol in "solve(2 x"
-> solve(2(1))
-Error in solve(2(1)) : attempt to apply non-function
-> 
+
+

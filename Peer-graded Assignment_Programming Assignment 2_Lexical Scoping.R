@@ -1,42 +1,31 @@
-makeVector <- function(x = numeric()) {
-+         m <- NULL
-+         set <- function(y) {
-+                 x <<- y
-+                 m <<- NULL
-+         }
-+         get <- function() x
-+         setmean <- function(mean) m <<- mean
-+         getmean <- function() m
-+         list(set = set, get = get,
-+              setmean = setmean,
-+              getmean = getmean)
+ makeVector <- function(x = numeric()) {
++ m <- NULL
++ set <- function(y) {
++     x <<- y
++     m <<- NULL
++ }
++ 
++ get <- function() x
++ setmean <- function(mean) m <<- mean
++ getmean <- function() m
++ list(set = set, get = get,
++     setmean = setmean,
++     getmean = getmean)
 + }
 > cachemean <- function(x, ...) {
-+         m <- x$getmean()
-+         if(!is.null(m)) {
-+                 message("getting cached data")
-+                 return(m)
-+         }
-+         data <- x$get()
-+         m <- mean(data, ...)
-+         x$setmean(m)
-+         m
++ m <- x$getmean()
++ if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
 + }
-> makeCacheMatrix <- function(x=matrix())
++ data <- x$get()
++ m <- mean(data, ...)
++ x$setmean(m)
++ m
 + }
-Error: unexpected '}' in:
-"makeCacheMatrix <- function(x=matrix())
-}"
-> makeCacheMatrix <- function(x=matrix()) }
-Error: unexpected '}' in "makeCacheMatrix <- function(x=matrix()) }"
-> makeCacheMatrix <- function(x=matrix) }
-Error: unexpected '}' in "makeCacheMatrix <- function(x=matrix) }"
+
 > makeCacheMatrix <- function(x=matrix) {
 + }
-> cacheSolve <- makeCacheaMatrix {
-Error: unexpected '{' in "cacheSolve <- makeCacheaMatrix {"
-> cacheSolve
-Error: object 'cacheSolve' not found
 > cacheSolve <- function(x, ...) {
 + }
 > makeCacheMatrix <- function(x=matrix()){
@@ -46,44 +35,37 @@ Error: object 'cacheSolve' not found
 + invr<<-NULL
 + }
 + }
-> get<-function() x
-> get<-function() x {
-Error: unexpected '{' in "get<-function() x {"
-> get<-function() x
-> setinverse<-fucntion(inverse) invr<<-inverse
-Error: unexpected symbol in "setinverse<-fucntion(inverse) invr"
-> set <-function(inverse) invr<<-inverse
-> get <-function()invr
-> list(set=set, get=get, setinverse=setinverse, getinverse = getinverse)
+> get <- function() x
+> setinverse <- function(inverse) m <<- inverse
+> getinverse <- function() m
+> list(set = set, get = get,
++      setinverse = setinverse,
++      getinverse = getinverse)
 $set
 function(inverse) invr<<-inverse
 
 $get
-function()invr
+function() x
 
 $setinverse
-function(inverse) invrs <- inverse
+function(inverse) m <<- inverse
 
 $getinverse
-function() invrs
+function() m
 
 > cacheSolve <- function(x, ...) {
-+ invr<= x$getinverse()
-+ if(!is.null(invr)) {
++ m<= x$getinverse()
++ if(!is.null(m)) {
 + message("Getting Cached Data:-")
-+ return(invr)
++ return(m)
 + }
 + matrx<-x$get()
-+ invr<-solve(matrx, ...)
-+ x$setinverse(invr)
-+ invr
++ m<-solve(matrx, ...)
++ x$setinverse(m)
++ m
 + }
-> solve(x)
-Error in solve.default(x) : 'a' (2 x 1) must be square
 > solve
 function (a, b, ...) 
 UseMethod("solve")
-<bytecode: 0x000002826ef6c450>
+<bytecode: 0x0000026651b753b8>
 <environment: namespace:base>
-
-
